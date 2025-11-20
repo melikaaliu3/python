@@ -29,7 +29,7 @@
 #     global greeting
 #     greeting="Goodbye"
 #     name="Alice"
-#BV
+#
 #     messafe=f"{greeting},{name}"
 #
 #     print(message)
@@ -38,9 +38,9 @@
 # print(greeting)
 
 
-def greet_person(name,greeting="Hello"):
-    message=f"{greeting},{name}"
-    return message
-
-print(greet_person("Alice"))
-print(greet_person("Bob","Hi"))
+# def greet_person(name,greeting="Hello"):
+#     message=f"{greeting},{name}"
+#     return message
+#
+# print(greet_person("Alice"))
+# print(greet_person("Bob","Hi"))
