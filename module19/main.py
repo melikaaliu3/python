@@ -42,3 +42,41 @@ selected_author = st.sidebar.selectbox("Select year", ["All"] + list(books_df['Y
 selected_author = st.sidebar.selectbox("Select Genre", ["All"] + list(books_df['Genre'].unique()))
 min_rating = st.sidebar.slider("Maximumn user rating", 0.0, 5.0, 0.1)
 max_price = st.sidebar.slider("Max Price", 0 , books_df['Price'].max(), books_df['Price'].max())
+
+
+#Book title distribution
+with col1:
+    st.subheader("Top 10 Book titles")
+    top_titles = filtered_books_df["Name"].value_counts().head(10)
+    st.bar_chart(top_titles)
+
+with col2:
+    st.subheader("top 10 authors")
+    top_authors = filtered_books_df['Author'].value_counts().head(10)
+    st.bar_chart(top_authors)
+
+#Genre Distribution Pie Chart
+st.subheader("Genre Distribution")
+fig = px.pie(filtered_books_df, names='Genre', title='Most liked Genre (2009-2022)', colors='Genre',
+            color_discrete_sequence=px.color.sequintal.Plasma)
+
+#Number of Fiction vS Non-Fiction Books Over the Years
+st.subheader("Number of fiction vs non-fiction books over the years")
+size = filtered_books_df.groupby(['Year','Genre']).size().reset_index(name='Counts')
+
+
+st.plotly_chart(fig)
+
+st.subheader("Top 15 authors by counts of books published (2009-2022)")
+top_authors = filtered_books_df['Author'].value.counts().head(15).reset_index()
+top_authors.columns = ['Author', 'Count']
+fig = px.bar(top_authors , x='Count', y='Author' , orientation='h')
+            title = 'top 15 authors by counts of books published',
+            labels={'Count': 'Counts of books published' , 'Author': 'Author'},
+            color = 'Count', color_continous_scale=px.colors.sequemtial.Plasma)
+st.plotly_chart(fig)
+
+st.subheader('Filter Data by Genre')
+genre_filter = st.selectbox("Select Genre", filtered_books_df['Genre'].unique())
+filtered_books_df = filtered-books_df[filtered_books_df['Genre'] == genre_filter]
+st.write(filtered_genre_df)
