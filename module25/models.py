@@ -5,4 +5,4 @@ class MovieCreate(BaseModel):
     director: str
 
 class Movie(MovieCreate):
-    id:int
+    id: int
