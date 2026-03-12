@@ -1,17 +1,7 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from routes.category_routes import category_bp
-from routes.receipt_routes import receipt_bp
+from fastapi import FastAPI
+from routers import categories, recipes
 
-app = Flask(__name__)
+app = FastAPI(title="Online Recipe Book")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/db.sqlite3'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-app.register_blueprint(category_bp)
-app.register_blueprint(receipt_bp)
-
-if __name__ == "__main__":
-    app.run(debug=True)
+app.include_router(categories.router)
+app.include_router(recipes.router)

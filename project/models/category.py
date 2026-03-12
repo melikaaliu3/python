@@ -1,7 +1,9 @@
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, Integer, String
+from database import Base
 
-db = SQLAlchemy()
 
-class Category(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
+class Category(Base):
+    __tablename__ = "categories"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=True)

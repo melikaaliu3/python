@@ -1,3 +1,6 @@
-Flask
-Flask-SQLAlchemy
-Flask-Cors
+fastapi
+uvicorn
+sqlalchemy
+pandas
+plotly
+streamlit
