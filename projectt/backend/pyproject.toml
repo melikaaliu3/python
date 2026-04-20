@@ -1,0 +1,10 @@
+[project]
+name = "movies-backend"
+version = "0.1.0"
+description = "FastAPI backend for Movies Management System"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard]>=0.128.1",
+    "psycopg2-binary>=2.9.9",
+    "python-dotenv>=1.0.0"
+]
