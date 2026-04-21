@@ -277,3 +277,5 @@ async def get_stats():
             """)
             stats = cur.fetchone()
             return stats
+
+
